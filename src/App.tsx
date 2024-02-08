@@ -1,12 +1,14 @@
 import './App.scss';
 
 import { SideBar } from './features/SideBar';
+import { TicketList } from './features/TicketList';
 
 function App() {
   return (
-    <div>
+    <main className="main">
       <SideBar />
-    </div>
+      <TicketList />
+    </main>
   );
 }
 
