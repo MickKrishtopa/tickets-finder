@@ -1,8 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Flex, Radio, RadioGroup, Stack, Box } from '@chakra-ui/react';
 
+import { useAppDispatch } from '../../../../store/hooks/hooks';
+import { setSort } from '../../model/store/sideBarSlice';
+
+import { SortType } from '../../model/types/types';
+
 const SortList = () => {
-  const [value, setValue] = useState('1');
+  const [value, setValue] = useState('');
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setSort(value as SortType));
+  }, [value]);
 
   return (
     <Flex flexDirection="column" gap="10px" alignItems="start" width="200px">

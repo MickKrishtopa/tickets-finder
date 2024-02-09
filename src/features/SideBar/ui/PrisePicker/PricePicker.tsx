@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   RangeSlider,
   RangeSliderTrack,
@@ -7,10 +7,23 @@ import {
   Input,
   Stack,
 } from '@chakra-ui/react';
+import { useAppDispatch } from '../../../../store/hooks/hooks';
+import { setPriceInterval } from '../../model/store/sideBarSlice';
 
 const PricePicker = ({ maxValue = 20000 }) => {
-  const [lowestPrice, setLowestPrice] = useState<string | number>('');
-  const [highestPrice, setHighestPrice] = useState<string | number>('');
+  const [lowestPrice, setLowestPrice] = useState<string>('');
+  const [highestPrice, setHighestPrice] = useState<string>('');
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const priceInteval = {
+      min: lowestPrice,
+      max: highestPrice,
+    };
+    dispatch(setPriceInterval(priceInteval));
+  }, [lowestPrice, highestPrice]);
+
   return (
     <>
       <Stack spacing={3}>
@@ -38,8 +51,8 @@ const PricePicker = ({ maxValue = 20000 }) => {
         value={[Number(lowestPrice), Number(highestPrice)]}
         onChange={(val) => {
           console.log(val);
-          setLowestPrice(val[0]);
-          setHighestPrice(val[1]);
+          setLowestPrice(val[0].toString());
+          setHighestPrice(val[1].toString());
         }}
       >
         <RangeSliderTrack>

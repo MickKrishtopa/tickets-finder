@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Checkbox, CheckboxGroup, Flex, Stack } from '@chakra-ui/react';
+import { useAppDispatch } from '../../../../store/hooks/hooks';
+import { setChange } from '../../model/store/sideBarSlice';
 
 const ChangeFilter = () => {
   const [checkedItems, setCheckedItems] = useState({
@@ -10,6 +12,12 @@ const ChangeFilter = () => {
     },
     withoutChange: false,
   });
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setChange(checkedItems));
+  }, [checkedItems]);
 
   const allGroupChecked = checkedItems.withChange.one && checkedItems.withChange.two;
   const halfGroupChecked =
