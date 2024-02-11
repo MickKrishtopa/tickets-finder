@@ -1,6 +1,6 @@
 # Ticket finder: React + TypeScript + Vite
 
-Проект доутспен по [ссылке](https://MickKrishtopa.github.io/tickets-finder/)
+Проект доступен по [ссылке](https://MickKrishtopa.github.io/tickets-finder/)
 
 Для локального запуска:
 
