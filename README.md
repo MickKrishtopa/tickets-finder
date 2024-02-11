@@ -1,4 +1,4 @@
-# Ticket filnder: React + TypeScript + Vite
+# Ticket finder: React + TypeScript + Vite
 
 Проект доутспен по [ссылке](https://MickKrishtopa.github.io/tickets-finder/)
 
