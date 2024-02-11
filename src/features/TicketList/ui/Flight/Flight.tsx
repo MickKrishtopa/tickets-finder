@@ -11,29 +11,15 @@ const Flight = (props: Leg) => {
 
   const airline = segments[0].airline.caption;
 
-  const departureCity = segments[0].departureCity.caption;
+  const departureCity = segments[0].departureCity?.caption;
   const departureAirport = segments[0].departureAirport.caption;
   const departureAirportUid = segments[0].departureAirport.uid;
   const departureDate = segments[0].departureDate;
 
-  const arrivalCity = segments[segments.length - 1].arrivalCity.caption;
+  const arrivalCity = segments[segments.length - 1].arrivalCity?.caption;
   const arrivalAirport = segments[segments.length - 1].arrivalAirport.caption;
   const arrivalAirportUid = segments[segments.length - 1].arrivalAirport.uid;
   const arrivalDate = segments[segments.length - 1].arrivalDate;
-
-  //   const {
-  //     departureCity = 'Москва',
-  //     departureAirport = 'ШЕРЕМЕТЬЕВО',
-  //     departureAirportUid = 'SVO',
-  //     arrivalCity = 'Париж',
-  //     arrivalAirport = 'ПАРИЖ, ШАРЛЬ ДЕ ГОЛЛЬ',
-  //     arrivalAirportUid = 'CDG',
-  //     departureDate = '2020-08-18T06:10:00',
-  //     duration = 735,
-  //     arrivalDate = '2020-08-18T09:15:00',
-  //     countChange = 1,
-  //     airline = 'Аэрофлот',
-  //   } = props;
 
   const parsedArrivalDate = parsingDate(arrivalDate);
   const parsedDepartureDate = parsingDate(departureDate);

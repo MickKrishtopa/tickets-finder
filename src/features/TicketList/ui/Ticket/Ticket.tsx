@@ -42,13 +42,7 @@ const Ticket = (props: FlightType) => {
       <Flight {...props.legs[0]} />
       <Box width="100%" backgroundColor="blue" height="3px" margin="0 auto 5px" />
       <Flight {...props.legs[1]} />
-      <Button
-        backgroundColor="rgb(72, 223, 92)"
-        height="60px"
-        fontSize="20px"
-        color="white"
-        _hover={{ backgroundColor: 'rgb(223, 208, 72)' }}
-      >
+      <Button colorScheme="blue" height="60px" fontSize="20px" color="white">
         ВЫБРАТЬ
       </Button>
     </Flex>

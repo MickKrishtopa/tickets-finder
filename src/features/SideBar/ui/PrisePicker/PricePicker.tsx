@@ -7,14 +7,22 @@ import {
   Input,
   Stack,
 } from '@chakra-ui/react';
-import { useAppDispatch } from '../../../../store/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks/hooks';
 import { setPriceInterval } from '../../model/store/sideBarSlice';
 
-const PricePicker = ({ maxValue = 20000 }) => {
-  const [lowestPrice, setLowestPrice] = useState<string>('');
-  const [highestPrice, setHighestPrice] = useState<string>('');
+const PricePicker = () => {
+  const maxValue = useAppSelector((state) => state.ticketList.minMaxPrice.max);
+  const minValue = useAppSelector((state) => state.ticketList.minMaxPrice.min);
+
+  const [lowestPrice, setLowestPrice] = useState<string>(minValue.toString());
+  const [highestPrice, setHighestPrice] = useState<string>(maxValue.toString());
 
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    setLowestPrice(minValue.toString());
+    setHighestPrice(maxValue.toString());
+  }, [maxValue, minValue]);
 
   useEffect(() => {
     const priceInteval = {
@@ -46,11 +54,10 @@ const PricePicker = ({ maxValue = 20000 }) => {
         aria-label={['min', 'max']}
         min={0}
         max={maxValue}
-        defaultValue={[2000, 30000]}
+        defaultValue={[minValue, maxValue]}
         width="200px"
         value={[Number(lowestPrice), Number(highestPrice)]}
         onChange={(val) => {
-          console.log(val);
           setLowestPrice(val[0].toString());
           setHighestPrice(val[1].toString());
         }}

@@ -1,15 +1,16 @@
 import { Checkbox, Stack, CheckboxGroup, useCheckboxGroup } from '@chakra-ui/react';
-import { useAppDispatch } from '../../../../store/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks/hooks';
 import { useEffect } from 'react';
 import { setCompany } from '../../model/store/sideBarSlice';
 
-interface IProps {
-  companyList?: string[];
-}
+const CompanyFilter = () => {
+  const companyList = useAppSelector((state) => state.ticketList.carrierList);
 
-const CompanyFilter = ({ companyList = ['Аэрофлот', 'J7', 'Пегас'] }: IProps) => {
-  const { value, onChange } = useCheckboxGroup({ defaultValue: companyList });
-  // console.log(value);
+  const { value, setValue } = useCheckboxGroup();
+
+  useEffect(() => {
+    setValue(companyList);
+  }, [companyList]);
 
   const dispatch = useAppDispatch();
 
@@ -18,10 +19,11 @@ const CompanyFilter = ({ companyList = ['Аэрофлот', 'J7', 'Пегас'] 
   }, [value]);
 
   return (
-    <CheckboxGroup defaultValue={companyList}>
+    <CheckboxGroup value={value} onChange={setValue}>
       <Stack spacing={0}>
         {companyList.map((item, i) => (
-          <Checkbox key={i} value={item} onChange={onChange}>
+          // <Checkbox key={i} value={item} onChange={onChange} isChecked={true}>
+          <Checkbox key={i} value={item}>
             {item}
           </Checkbox>
         ))}

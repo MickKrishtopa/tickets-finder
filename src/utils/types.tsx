@@ -51,12 +51,12 @@ export interface Aircraft {
 }
 
 export interface ServicesDetails {
-  freeCabinLuggage: {};
-  paidCabinLuggage: {};
+  freeCabinLuggage: object;
+  paidCabinLuggage: object;
   tariffName: string;
   fareBasis: FareBasis;
   freeLuggage: { [key: string]: Luggage };
-  paidLuggage: {};
+  paidLuggage: object;
 }
 
 export interface Segment {
