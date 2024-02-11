@@ -9,7 +9,7 @@ const Ticket = (props: FlightType) => {
   return (
     <Flex
       width="100%"
-      backgroundColor="aqua;"
+      // backgroundColor="aqua;"
       minHeight="400px"
       flexDirection="column"
       mb="50px"

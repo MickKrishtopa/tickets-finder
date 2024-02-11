@@ -8,7 +8,7 @@ import { CompanyFilter } from '../CompanyFilter/CompanyFilter';
 
 const SideBar = () => {
   return (
-    <Flex as="aside" flexDirection="column" width="250px" gap="40px">
+    <Flex as="aside" flexDirection="column" width="250px" gap="40px" marginRight="30px">
       <SortList />
       <ChangeFilter />
       <PricePicker />
